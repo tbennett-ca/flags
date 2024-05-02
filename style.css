@@ -12,24 +12,33 @@ body{
     justify-content: center;
     min-height: 100vh;
     background: #0b132b; /* 0b132b, 1c2541, 3a506b, 5bc0be, 6fffe9*/
+    
 }
 
-.container{
-    display: flex;
+.grid-container{
+    display: grid;
+    grid-template-areas:
+        'tools tools tools tools tools tools'
+        'canvas canvas canvas canvas canvas canvas'
+        'results results results results results results'; 
     width: 100%;
     gap: 10px;
     padding: 10px;
-    max-width: 1050px;
+    max-width: 800px;
 }
 
 section{
+    display: flex;
     background: #3a506b;
     border-radius: 7px;
 }
 
 .tools-board{
-    width: 210px;
+    display: flex;
+    width: 100%;
     padding: 15px 22px 0;
+    column-count: 4;
+    grid-area: tools;
 }
 
 .row .options{
@@ -42,6 +51,22 @@ section{
     align-items: center;
     cursor: pointer;
     margin-bottom: 10px;
+}
+
+.row:nth-child(1) {
+    column-width: 130px; /* Set width for the first column */
+}
+
+.row:nth-child(2) {
+    column-width: 130px; /* Set width for the second column */
+}
+
+.row:nth-child(3) {
+    column-width: 245px; /* Set width for the third column */
+}
+
+.row:nth-child(4) {
+    column-width: 130px; /* Set width for the fourth column */
 }
 
 .option:is(:hover, .active) img{
@@ -73,60 +98,131 @@ section{
 }
 
 .colors .options{
-    display: flex;
-    columns: 4;
+    display: grid;
+    flex-wrap: wrap;
     justify-content: space-between;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .colors .option{
     height: 20px;
     width: 20px;
     background-color: red;
-    border-radius: 50%;
-    margin-top: 3px;
+    border-radius: 10%;
+    /* margin-top: 1px; */
+    /* flex-basis: 20%; */
+    margin: 5px;
+    /* position: relative; */
+}
+
+.colors .option.selected::before{
     position: relative;
+    content: "";
+    top: 50%;
+    left: 50%;
+    height: 14px;
+    width: 24px;
+    background: inherit;
+    /* border-radius: 1px; */
+    border: 3px solid #fff;
+    transform: translate(-50%, -50%);
 }
 
 .colors .option:nth-child(1){
+    background-color: black;
+}
+
+.colors .option:nth-child(9){
+    background-color: grey;
+}
+
+.colors .option:nth-child(17){
     background-color: white;
     border: 1px solid #bfbfbf;
 }
 
 .colors .option:nth-child(2){
-    background-color: black;
+    background-color: darkred;
 }
 
-.colors .option:nth-child(3){
+.colors .option:nth-child(10){
     background-color: red;
 }
 
-.colors .option:nth-child(4){
+.colors .option:nth-child(18){
+    background-color: lightsalmon;
+}
+
+.colors .option:nth-child(3){
+    background-color: orangered;
+}
+
+.colors .option:nth-child(11){
+    background-color: darkorange;
+}
+
+.colors .option:nth-child(19){
     background-color: orange;
 }
 
-.colors .option:nth-child(5){
+.colors .option:nth-child(4){
+    background-color: darkgoldenrod;
+}
+
+.colors .option:nth-child(12){
     background-color: yellow;
 }
 
-.colors .option:nth-child(6){
+.colors .option:nth-child(20){
+    background-color: palegoldenrod;
+}
+
+.colors .option:nth-child(5){
+    background-color: darkgreen;
+}
+
+.colors .option:nth-child(13){
     background-color: green;
 }
 
+.colors .option:nth-child(21){
+    background-color: greenyellow;
+}
+
+.colors .option:nth-child(6){
+    background-color: darkcyan;
+}
+
+.colors .option:nth-child(14){
+    background-color: lightseagreen;
+}
+
+.colors .option:nth-child(22){
+    background-color: cyan;
+}
+
 .colors .option:nth-child(7){
+    background-color: darkblue;
+}
+
+.colors .option:nth-child(15){
     background-color: blue;
 }
 
-.colors .option.selected::before{
-    position: absolute;
-    content: "";
-    top: 50%;
-    left: 50%;
-    height: 12px;
-    width: 12px;
-    background: inherit;
-    border-radius: inherit;
-    border: 2px solid #fff;
-    transform: translate(-50%, -50%);
+.colors .option:nth-child(23){
+    background-color: lightskyblue;
+}
+
+.colors .option:nth-child(8){
+    background-color: purple;
+}
+
+.colors .option:nth-child(16){
+    background-color: magenta;
+}
+
+.colors .option:nth-child(24){
+    background-color: lightpink;
 }
 
 /* .option #color-picker{
@@ -145,7 +241,7 @@ section{
     outline: none;
     padding: 11px 0;
     font-size: 0.9rem;
-    margin-bottom: 13px;
+    margin: 13px;
     background: none;
     border-radius: 4px;
     cursor: pointer;
@@ -162,13 +258,28 @@ section{
     background: #5bc0be;
 }
 
+.buttons .undo{
+    color: #5bc0be; /* 0b132b, 1c2541, 3a506b, 5bc0be, 6fffe9*/
+    border: 2px solid #5bc0be;
+    transition: all 0.3s ease;
+}
+
+.undo:hover{
+    color: #fff;
+    background: #5bc0be;
+}
+
 .buttons .submit-img{
     background: #5bc0be;
     border: 2px solid #5bc0be;
 }
 
 .drawing-board{
-    flex: 1;
+    /* flex: 1; */
+    width: 100%;
+    grid-area: canvas;
+    min-width: 500px;
+    min-height: 500px;
 }
 
 .drawing-board canvas{
@@ -176,4 +287,31 @@ section{
     height: 100%;
     background: #fff;
     border-radius: 7px;
+}
+
+.image-gallery {
+    grid-area: results;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Five columns for the grid */
+    grid-gap: 10px;
+}
+
+.image-gallery img {
+    width: 60%;
+    height: auto; /* Use full vertical space of the grid item */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    margin: auto; /* Adjust spacing between image and caption */
+    display: block;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.caption {
+    text-align: center;
+    margin: 5px 0; /* Adjust top and bottom margins */
+    color: #c4f5ed;
 }

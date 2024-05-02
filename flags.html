@@ -6,10 +6,10 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
+    <div class="grid-container">
         <section class="tools-board">
-            <div class="row">
-                <label class="title">Shapes</label>
+            <div class="row"  style="break-after: column;">
+                <!-- <label class="title">Shapes</label> -->
                 <ul class="options">
                     <li class="option tool" id="rectangle">
                         <img src="icons/rectangle.svg", alt="">
@@ -23,53 +23,88 @@
                         <img src="icons/line.svg", alt="">
                         <span>Line</span>
                     </li>
-                    <li class="option">
-                        <input type="checkbox" id="fill-color">
-                        <label for="fill-color">Fill colour</label>
-                    </li>
-                </ul>
-            </div>
-            <div class="row">
-                <label class="title">Options</label>
-                <ul class="options">
                     <li class="option active tool" id="brush">
                         <img src="icons/brush.svg", alt="">
                         <span>Brush</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row" style="break-after: column;">
+                <!-- <label class="title">Options</label> -->
+                <ul class="options">
+                    <li class="option">
+                        <input type="checkbox" id="fill-color">
+                        <label for="fill-color">Fill colour</label>
                     </li>
                     <li class="option tool" id="eraser">
                         <img src="icons/eraser.svg", alt="">
                         <span>Eraser</span>
                     </li>
                     <li class="option">
-                        <input type="range" id="size-slider" min="1" max="100" value="5">
+                        <input type="range" id="size-slider" min="10" max="100" value="50">
                     </li>
                 </ul>
             </div>
             <div class="row colors">
-                <label class="title">Colours</label>
+                <!-- <label class="title">Colours</label> -->
                 <ul class="options">
-                    <li class="option"></li>
                     <li class="option selected"></li>
                     <li class="option"></li>
                     <li class="option"></li>
                     <li class="option"></li>
                     <li class="option"></li>
                     <li class="option"></li>
-                    <!-- <li class="option">
-                        <input type="color" id="color-picker" value="#4A98F7">
-                    </li> -->
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
                 </ul>
             </div>
             <div class="row buttons">
                 <button class="clear-canvas">Clear</button>
-                <button class="submit-img">Submit</button>
+                <button class="undo">Undo/Redo</button>
+                <!-- <button class="submit-img">Submit</button> -->
             </div>
         </section>
         <section class="drawing-board">
             <canvas></canvas>
         </section>
+        <section class="image-gallery">
+            <div class="grid-item">
+                <img src="default.png" id='img1' alt="Image 1">
+                <div class="caption" id='cap1'></div>
+            </div>
+            <div class="grid-item">
+                <img src="default.png" id='img2' alt="Image 2">
+                <div class="caption" id='cap2'></div>
+            </div>
+            <div class="grid-item">
+                <img src="default.png" id='img3' alt="Image 3">
+                <div class="caption" id='cap3'></div>
+            </div>
+            <div class="grid-item">
+                <img src="default.png" id='img4' alt="Image 4">
+                <div class="caption" id='cap4'></div>
+            </div>
+            <div class="grid-item">
+                <img src="default.png" id='img5' alt="Image 5">
+                <div class="caption" id='cap5'></div>
+            </div>
+        </section>
     </div>
-    <!-- <canvas id="canvas"></canvas>
-    <script src="canvas.js"></script> -->
 </body>
 </html>
